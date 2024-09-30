@@ -16,11 +16,21 @@ URI = "https://random-word-api.herokuapp.com/"
 # path and query
 pnq = "word?length="
 
-# Function request word
-def ReWord(size):
+def api(size):
     responses = requests.get(URI + pnq + str(size))
     response_data = responses.json()
-    return(response_data[0])
+    return response_data[0]
+
+def wordlist(size):
+    return
+
+# Function request word
+def ReWord(size):
+    try:
+        word = api(size)
+    except:
+        word = wordlist(size)
+    return word
 
 # Letterchecker
 def Checkletter(word, letter):
