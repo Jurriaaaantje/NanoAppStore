@@ -36,7 +36,7 @@ def Game_loop(minG, maxG):
 
 def GTN():
     ##### Variables
-    Play_again = True
+    play_again = True
     ##### Intro
     print("\n\033[34m" + r""" 
       _   _                    ____                           _             
@@ -49,12 +49,13 @@ def GTN():
     print("\t\tReady to give it a try? (" + "\033[0;32m" + "yes" + "\033[0m" + "/" + "\033[0;31m" + "no" + "\033[0m" + ")")
     print("\t\t(Saying no will exit this program)")
     if 'no' in input('\t\t'):
-        Play_again = False
+        play_again = False
     ##### Games
-    while Play_again:
+    while play_again:
         Game_loop(1,100)
         print("\t\tWanna play Again? (" + "\033[0;32m" + "yes" + "\033[0m" + "/" + "\033[0;31m" + "no" + "\033[0m" + ")")
-        if 'no' in input('\t\t').lower:
-            Play_again = False
+        answer = input("\t\t").lower()
+        if 'no' in answer:
+            play_again = False
     return
 
