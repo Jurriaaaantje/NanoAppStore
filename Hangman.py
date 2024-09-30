@@ -13,6 +13,7 @@ logo = "\n\033[94m" + r"""
 
 # URI
 URI = "https://random-word-api.herokuapp.com/"
+# path and query
 pnq = "word?length="
 
 # Function request word
