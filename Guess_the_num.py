@@ -12,10 +12,10 @@ def Game_loop(minG, maxG):
     print(f'\t\tMy secret number is in the range of {minG} and {maxG}!')
     for x in range(10):
         print(f'\t\tTurn {x+1}:')
-        guess = int(input("\t\t"))
-        while not(guess < maxG + 1 and guess > minG):
+        guess = input("\t\t")
+        while not(int(guess) < maxG + 1 and int(guess) > minG) and not(guess.isnumeric()):
             print(f"\t\tI'm Sorry, please enter a number between {minG} and {maxG}!")
-            guess = int(input('\t\t'))
+            guess = input('\t\t')
 
         if guess == Num:
             print(f'\t\tYay! You won with {10-(x+1)} turns left!')
@@ -50,3 +50,4 @@ def GTN():
         if 'no' in input('\t\t'):
             Play_again = False
     return
+
