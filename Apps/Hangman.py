@@ -14,6 +14,88 @@ logo = "\n\033[94m" + r"""
 ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
                                                                 """ + "\033[0m"
 
+#hangman sprites
+Hangmansprites = ['''
+       
+       
+       
+       
+       
+       
+=========''','''
+      |
+      |
+      |
+      |
+      |
+      |
+=========''','''
+  +---+
+      |
+      |
+      |
+      |
+      |
+=========''','''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========''']
+
+
+#letters in word
+def wordletter(word):
+    onlyletter = ''
+    for i in word:
+        if not i in onlyletter:
+            onlyletter += i
+    return onlyletter
+
 # Letterchecker
 def Checkletter(word, letter):
     for i in word:
@@ -32,6 +114,7 @@ def Gameloop(wordlist):
     word = wordlist.pull_word(difficulty)
     asked_letters = []
     good_letters = []
+    letter_used = False
 
     print(word)
 
@@ -43,25 +126,29 @@ def Gameloop(wordlist):
     for i in asked_letters:
         print(i, end=" ")
 
+    onlyletter = wordletter(word)
+
     x = 10
     while x > 0:
         os.system('cls' if os.name == 'nt' else 'clear')
-        print(logo)
-
+        print(logo + '\n')
+        print(Hangmansprites[10-x])
         print(f"You have {x} lives left")
 
-        j = 0
-        j_old = len(good_letters)
+
         for i in word:
             if i in good_letters:
-                j = j + 1
                 print(i, end=" ")
             else:
                 print("_", end=" ")
-        if j_old <= j:
-            x = x - 1
 
-
+        j = 0
+        j_old = len(good_letters)
+        for i in onlyletter:
+            if i in good_letters:
+                j += 1
+        if j_old == j:
+            x -= 1
 
         print()
         print("Letters guesssed :")
@@ -69,19 +156,22 @@ def Gameloop(wordlist):
             print(i, end=" ")
         print()
         print("Guess a letter")
-        if j == len(word):
+        if j == len(onlyletter):
             return 'Win'
-
+        if(letter_used): print("Letter used sorry")
         Input = str()
         while len(Input) != 1:
             Input  = input()
         Input = Input.lower()
         if not Checkletter(asked_letters, Input):
             asked_letters.append(Input)
+            letter_used = False
             if (Checkletter(word, Input)):
                 good_letters.append(Input)
+                x += 1
         else:
-            print("Letter used sorry")
+            x += 1
+            letter_used = True
         #ClrDubbles(asked_letters)
     print(f'Sorry the word was {word}')
     return 'Lose'
