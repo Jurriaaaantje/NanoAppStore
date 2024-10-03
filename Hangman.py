@@ -1,5 +1,8 @@
 import requests
+import json
+import random
 import os
+from the_hangman_wordlist import HangmanWordlist
 
 #logo
 logo = "\n\033[94m" + r"""
@@ -10,27 +13,6 @@ logo = "\n\033[94m" + r"""
 ██║  ██║██║  ██║██║ ╚████║╚██████╔╝██║ ╚═╝ ██║██║  ██║██║ ╚████║
 ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝
                                                                 """ + "\033[0m"
-
-# URI
-URI = "https://random-word-api.herokuapp.com/"
-# path and query
-pnq = "word?length="
-
-def api(size):
-    responses = requests.get(URI + pnq + str(size))
-    response_data = responses.json()
-    return response_data[0]
-
-def wordlist(size):
-    return
-
-# Function request word
-def ReWord(size):
-    try:
-        word = api(size)
-    except:
-        word = wordlist(size)
-    return word
 
 # Letterchecker
 def Checkletter(word, letter):
@@ -45,8 +27,9 @@ def ClrDubbles(list):
         pass
 
 # Gameloop
-def Gameloop(size):
-    word = ReWord(size)
+def Gameloop(wordlist):
+    difficulty = input("What difficulty do you want? (easy/medium/hard): ")
+    word = wordlist.pull_word(difficulty)
     asked_letters = []
     good_letters = []
 
@@ -61,7 +44,7 @@ def Gameloop(size):
         print(i, end=" ")
 
     x = 10
-    while (x >= 1):
+    while x > 0:
         os.system('cls' if os.name == 'nt' else 'clear')
         print(logo)
 
@@ -75,7 +58,7 @@ def Gameloop(size):
                 print(i, end=" ")
             else:
                 print("_", end=" ")
-        if j_old == j:
+        if j_old <= j:
             x = x - 1
 
 
@@ -86,7 +69,7 @@ def Gameloop(size):
             print(i, end=" ")
         print()
         print("Guess a letter")
-        if(j == len(word)):
+        if j == len(word):
             return 'Win'
 
         Input = str()
@@ -100,18 +83,22 @@ def Gameloop(size):
         else:
             print("Letter used sorry")
         #ClrDubbles(asked_letters)
-
+    print(f'Sorry the word was {word}')
     return 'Lose'
 
 
 
 def HangerMan():
     print(logo)
+    wordlist = HangmanWordlist()
     PlayAgain = True
-    while PlayAgain == True:
-        if Gameloop(10) == 'Win':
+    while PlayAgain:
+        if Gameloop(wordlist) == 'Win':
             print('You Win!')
         else:
             print('You Lose!')
         if 'n' in input('play again? (y/n)'):
             PlayAgain = False
+
+if __name__ == "__main__":
+    HangerMan()
