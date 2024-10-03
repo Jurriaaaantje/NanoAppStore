@@ -103,11 +103,6 @@ def Checkletter(word, letter):
             return True
     return False
 
-# Clear dubbles
-def ClrDubbles(list):
-    for i in list:
-        pass
-
 # Gameloop
 def Gameloop(wordlist):
     difficulty = input("What difficulty do you want? (easy/medium/hard): ")

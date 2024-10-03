@@ -16,6 +16,8 @@ logo = "\n\033[95m" + r"""
             '-----'`     '---'  '.(_,_).' ''-'   `'-'    `-..-'        
                         """ + "\033[0m"
 
+#Diary Location
+diary_location = 'Apps/DiaryPackage.json'
 
 # Open and read the Diary
 def ReadJson(user):
@@ -23,7 +25,7 @@ def ReadJson(user):
     print(logo)
 
 
-    with open('DiaryPackage.json', 'r') as input_file:
+    with open(diary_location, 'r') as input_file:
         data = json.load(input_file)
 
     i = 0
@@ -35,7 +37,7 @@ def ReadJson(user):
     return i
 
 # Open and write the Diary
-def write_json(new_data, filename='DiaryPackage.json'):
+def write_json(new_data, filename=diary_location):
     with open(filename,'r+') as input_file:
         data = json.load(input_file)
         data["Diary"].append(new_data)
@@ -45,7 +47,7 @@ def write_json(new_data, filename='DiaryPackage.json'):
 
 
 def RemoveEntry(j):
-    with open('DiaryPackage.json', 'r') as input_file:
+    with open(diary_location, 'r') as input_file:
         data = json.load(input_file)
 
     succes = False
@@ -65,26 +67,18 @@ def RemoveEntry(j):
     if succes == False:
             print(f'\t\t Failed to remove entry {j} out of Diary')
 
-    with open('DiaryPackage.json', 'w') as output_file:
+    with open(diary_location, 'w') as output_file:
         json.dump(data, output_file, indent = 4)
     time.sleep(1)
 # datetime object containing current date and time
 
-
-# Sort Entries
-def SortEntry():
-    pass
-
-
-
+# main function
 def DiaryReader(user):
     now = datetime.now()
     DiaryOn = True
     Current_date = now.strftime("%d/%m/%Y")
     Current_time = now.strftime("%H:%M")
     New_Note = ''
-
-
 
     dt_string = now.strftime("%d/%m/%Y %H:%M")
     while DiaryOn:
@@ -122,7 +116,6 @@ def DiaryReader(user):
                     "Time": Current_time,
                     "Note": New_Note
                 }
-
 
                 write_json(dictionary)
             case '2':
