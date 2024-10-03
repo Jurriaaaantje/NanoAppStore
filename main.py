@@ -1,7 +1,7 @@
 import os
-from Guess_the_num import GTN
-from Diary import DiaryReader
-from Hangman import HangerMan
+from Apps.Guess_the_num import GTN
+from Apps.Diary import DiaryReader
+from Apps.Hangman import HangerMan
 
 ### Variable
 loop = True
