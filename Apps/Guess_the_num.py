@@ -59,3 +59,5 @@ def GTN():
             play_again = False
     return
 
+if __name__ == "__main__":
+    Game_loop("Test")

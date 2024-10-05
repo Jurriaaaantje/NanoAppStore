@@ -130,3 +130,7 @@ def DiaryReader(user):
             case '_':
                 print('Please retry your choice!')
                 input()
+
+
+if __name__ == "__main__":
+    DiaryReader("Test")
