@@ -2,6 +2,7 @@ import os
 from Apps.Guess_the_num import GTN
 from Apps.Diary import DiaryReader
 from Apps.Hangman import HangerMan
+from Apps.calculator import start_calculator
 
 ### Variable
 loop = True
@@ -24,6 +25,7 @@ while loop:
     print(" \t 1. Guess the number game! Give it your best try!")
     print(" \t 2. Diary! Write your wildest stories!")
     print(" \t 3. Hangman! You better know your alfabet!")
+    print(" \t 4. Calculator! When you don't know the answers!")
     print(" \t q. Exit!")
     if error1:
         print("\n \t Please enter valid input!")
@@ -41,6 +43,9 @@ while loop:
         case '3':
             os.system('cls' if os.name == 'nt' else 'clear')
             HangerMan()
+        case '4':
+            os.system('cls' if os.name == 'nt' else 'clear')
+            start_calculator()
         case 'q':
             os.system('cls' if os.name == 'nt' else 'clear')
             loop = False
