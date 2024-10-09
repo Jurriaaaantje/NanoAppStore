@@ -77,6 +77,7 @@ def start_calculator():
     ttk.Button(frm, text=":", command=lambda: enternum(":")).grid(column=3, row=4)
     ttk.Button(frm, text="=", command=lambda: enternum("=")).grid(column=3, row=5)
     # Initialize display
+    root.title("Calculator")
     update_display()
     root.mainloop()
 
