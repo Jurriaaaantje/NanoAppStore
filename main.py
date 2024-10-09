@@ -12,15 +12,18 @@ user = os.getlogin()
 
 while loop:
     os.system('cls' if os.name == 'nt' else 'clear')
-    print("\n\033[92m" + r""" 
-    888b    |                                        e                                   d8                             
-    |Y88b   |   /~~~8e  888-~88e  e88~-_            d8b     888-~88e  888-~88e   d88~\ _d88__  e88~-_  888-~\  e88~~8e  
-    | Y88b  |       88b 888  888 d888   i          /Y88b    888  888b 888  888b C888    888   d888   i 888    d888  88b 
-    |  Y88b |  e88~-888 888  888 8888   |         /  Y88b   888  8888 888  8888  Y88b   888   8888   | 888    8888__888 
-    |   Y88b| C888  888 888  888 Y888   '        /____Y88b  888  888P 888  888P   888D  888   Y888   ' 888    Y888    , 
-    |    Y888  "88_-888 888  888  "88_-~        /      Y88b 888-_88"  888-_88"  \_88P   "88_/  "88_-~  888     "88___/  
-                                                            888       888                                                """ + "\033[0m")
-    print(f'\t\tHi {user}! Welkom in de Nano Appstore.')
+    print("\n\033[92m" + r"""
+888888b.                    888                                                                 
+888  "88b                   888                                                                 
+888  .88P                   888                                                                 
+8888888K.  888d888 888  888 88888b.  88888b.d88b.   .d88b.  88888b.   .d88b.  888  888 .d8888b  
+888  "Y88b 888P"   888  888 888 "88b 888 "888 "88b d88""88b 888 "88b d88P"88b 888  888 88K      
+888    888 888     888  888 888  888 888  888  888 888  888 888  888 888  888 888  888 "Y8888b. 
+888   d88P 888     Y88b 888 888  888 888  888  888 Y88..88P 888  888 Y88b 888 Y88b 888      X88 
+8888888P"  888      "Y88888 888  888 888  888  888  "Y88P"  888  888  "Y88888  "Y88888  88888P' 
+                                                                          888                   
+                                                                     Y8b d88P                   """ + "\033[0m")
+    print(f'\t\tHi {user}! Welkom in de Bruhmongus Appstore.')
     print("\n\n")
     print(" \t 1. Guess the number game! Give it your best try!")
     print(" \t 2. Diary! Write your wildest stories!")
