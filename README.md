@@ -15,7 +15,7 @@ In de main gebruik ik de os library om de gebruiker van de device op te vragen
     import os
     user = os.getlogin()
 ```
-In Hangman gebruik ik de door (Noah) en ik gemaakte library The_Hangman_Wordlist voor het opvragen van woorden
+In Hangman gebruik ik de door [Noah](https://github.com/TheBiemGamer) en ik gemaakte library [The_Hangman_Wordlist](https://github.com/TheBiemGamer/TheHangmanWordlist) voor het opvragen van woorden
 ```python
     from the_hangman_wordlist import HangmanWordlist
     wordlist = HangmanWordlist()
